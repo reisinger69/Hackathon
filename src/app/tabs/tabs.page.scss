@@ -1,1 +1,17 @@
+ion-tab-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+ion-icon {
+  margin-right: 8px; /* Adjust space between icon and text */
+}
 
+ion-label {
+  margin-top: 10px;
+}
+
+ion-tab-bar {
+  display: flex;
+  justify-content: flex-start; /* Aligns tabs to the right */
+}
