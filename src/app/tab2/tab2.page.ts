@@ -28,7 +28,7 @@ export class Tab2Page{
           let getInfoDetection = http.getInfo(partId, inspectionIdDet);
 
           let partIdClas = response[0].inspections.filter((x: any) => x.name === "Classification")[0].id;
-          this.classificationGood = response[0].inspections.filter((x: any) => x.name === "Classification")[0].result == 1;
+          this.classificationGood = response[0].inspections.filter((x: any) => x.name === "Classification")[0].result === 1 ? "Kiste Ok" : "Kiste nicht Ok";
           let getInfoClassification = http.getInfo(partId, partIdClas);
 
           getInfoClassification.subscribe((response: any) => {
@@ -36,6 +36,7 @@ export class Tab2Page{
             if (response.image !== this.oldImgClass){
               this.imgSource = this.imgClassification;
               this.oldImgClass = response.image;
+
             }
           });
 
@@ -65,7 +66,7 @@ export class Tab2Page{
 
   isDetection = false;
 
-  classificationGood = false;
+  classificationGood = "";
 
   imgClassification = "";
   imgObjectDetection: string = "";

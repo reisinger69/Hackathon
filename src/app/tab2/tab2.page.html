@@ -28,6 +28,14 @@
             <div echarts [options]="option" class="chart"></div>
           </ion-card-content>
         </ion-card>
+        <ion-card *ngIf="!isDetection">
+          <ion-card-header>
+            Ergebnis
+          </ion-card-header>
+          <ion-card-content>
+            {{classificationGood}}
+          </ion-card-content>
+        </ion-card>
       </ion-col>
       <!-- Right Side (4/5 Width) -->
       <ion-col>
