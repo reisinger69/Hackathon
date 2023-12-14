@@ -3,13 +3,32 @@
 <ion-row>
   <ion-col class="ion-text-center">
   <div class="image-container">
-    <img src="assets/drone.gif" alt="Moving Image" class="moving-image" [@riseAnimation]="isRising">
+    <img src="assets/drone.gif" alt="Moving Image" class="moving-image" [@riseAnimation]="isRising" (click)="startRiseAnimation()">
   </div>
+    <ion-text class="moving-image" (click)="startRiseAnimation()">Drohne anklicken um zu starten</ion-text>
   </ion-col>
 </ion-row>
     <ion-row>
       <ion-col class="ion-text-center">
-        <ion-button (click)="startRiseAnimation()">Drohne starten</ion-button>
+        <!--<ion-button (click)="startRiseAnimation()" style="font-size: 4vb">Drohne starten</ion-button> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-card style="height: 35vb">
+          <ion-card-header  style="font-size: 5vb; margin-bottom: -10px">
+            Temperatur: 80C
+          </ion-card-header>
+          <ion-icon name="flame-outline" style="font-size: 23vb"></ion-icon>
+        </ion-card>
+      </ion-col>
+      <ion-col class="ion-text-center" >
+        <ion-card style="height: 35vb">
+          <ion-card-header style="font-size: 5vb; margin-bottom: -50px">
+            Akkustand: 80%
+          </ion-card-header>
+          <ion-icon name="battery-half-outline" style="font-size: 30vb"></ion-icon>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

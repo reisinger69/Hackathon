@@ -1,5 +1,8 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs";
+import {HttpService} from "../HTTPService";
 
 @Component({
   selector: 'app-tab1',
@@ -13,14 +16,19 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
     ])
   ]
 })
-export class Tab1Page {
+export class Tab1Page implements OnDestroy, OnInit{
 
-  constructor() {}
+  constructor(private elementRef: ElementRef, private http: HttpService) {}
+
 
   isRising = false;
 
   startRiseAnimation() {
     this.isRising = true;
+
+    this.http.startDrone().subscribe(result => {
+      console.log("Drone gestartet");
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
@@ -31,6 +39,14 @@ export class Tab1Page {
       const rect = imageElement.getBoundingClientRect();
       this.isRising = rect.bottom >= 0 && rect.top <= window.innerHeight;
     }
+  }
+
+  ngOnDestroy() {
+    this.elementRef.nativeElement.remove();
+  }
+
+  ngOnInit() {
+    console.log("New Comp");
   }
 
 }

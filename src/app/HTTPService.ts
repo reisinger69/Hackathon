@@ -28,4 +28,8 @@ export class HttpService {
   public getInfo(partId: any, inspectionId: any){
     return this.http.get(this.url + "/GetInspectionData/hackathon_2023/" + partId + "/" + inspectionId);
   }
+
+  public startDrone(){
+    return this.http.get("http://127.0.0.1:8000/start")
+  }
 }
